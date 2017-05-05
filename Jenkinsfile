@@ -16,7 +16,7 @@ node {
         echo "\u2600 Action: ${TFTESTAction}"
 
         dir('.'){
-            sh("terraform --help -detailed-exitcode; echo \$? > status")
+            sh("terraform --help || true")
         }
 
         dir('.'){
@@ -24,18 +24,13 @@ node {
             sh('pwd')
         }
 
-        def exitCode = readFile('status').trim()
-        def apply = false
-        echo "Terraform Plan Exit Code: ${exitCode}"
-        if (exitCode == 1) {
-            currentBuild.result = 'SUCCESS'
-        }
+
     }
 
     stage ('\u2779 LS'){
         def LSAction = "List files and directories"
         echo "\u2600 Action: ${LSAction}"
-        sh "ls -l */*"
+        sh ("ls -l")
     }
 
     stage ('\u2780 CD into Terraform Dir and LS'){
