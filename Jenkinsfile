@@ -16,7 +16,7 @@ node {
         echo "\u2600 Action: ${TFTESTAction}"
 
         dir('.'){
-            sh("terraform --help || true")
+            sh("which terraform || true")
         }
 
         dir('.'){
@@ -39,9 +39,9 @@ node {
         dir('terraform/consul-deployment'){sh "ls -l"}
     }
 
-    stage ('\u2781 Terraform Plan'){
-        def TFPlanAction = "Terraform Plan"
+    stage ('\u2781 Terraform Help'){
+        def TFHPlanAction = "Terraform Help"
         echo "\u2600 Action: ${TFPlanAction}"
-        dir('terraform/consul-deployment'){sh "terraform plan"}
+        dir('.'){sh "terraform --help || true"}
     }
 }
