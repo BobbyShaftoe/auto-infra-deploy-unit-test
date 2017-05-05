@@ -1,7 +1,8 @@
-# SPEC FOR UNIT AND INTEGRATION TESTING INFRASTRUCTURE FRAMEWORK
-### Currently, this is a simple idea and POC
+# Spec For Infrastructure Testing Framework
+### Attempting to Simulate Unit and Integration Tests
+    Currently, this is a simple idea and POC
 
-### DESCRIPTION
+#### DESCRIPTION
 
 A small collection of utilities that will compose a simple framework for performing tests on infrastructure components as they are created, modified or destroyed throughout any automated process or CI/CD pipeline.
 
