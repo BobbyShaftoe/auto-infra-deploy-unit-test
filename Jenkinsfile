@@ -16,7 +16,7 @@ node {
         echo "\u2600 Action: ${TFTESTAction}"
 
         dir('.'){
-            sh('terraform --help -detailed-exitcode; echo \$? > status"')
+            sh("terraform --help -detailed-exitcode; echo \$? > status")
         }
 
         dir('.'){
