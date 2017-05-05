@@ -16,12 +16,13 @@ A small collection of utilities that will compose a simple framework for perform
 
 
 
-##### The idea for this framework may or may not be composed of 
+*<b>The idea for this framework may or may not be composed of</b>* </br> 
+
 a listener such as a message queue like Kafka, a named pipe, and/or just a simple script  to consume output of a Terraform action either by stream redirection or simply tailing a logfile
 The Python libs mentioned above to consume output from a terraform command through message queue or similar, make connections, handle data, parse results perform tests, write out formats (Junit/XML and Json)
 A small in-memory DB may be required such as Redis
 
-*Essentially most of the work will be handled by Python scripts*
+*<b>Essentially most of the work will be handled by Python scripts</b>*
 
 
 
