@@ -52,11 +52,12 @@ A small in-memory DB may be required such as Redis
 
 
 ### REFERENCE
-https://pypi.python.org/pypi/python-nmap
-https://pypi.python.org/pypi/python-libnmap/0.6.1
 
-https://nmap.org/book/output-formats-xml-output.html
-
-http://code.activestate.com/recipes/436477-filetailpy/
-https://pypi.python.org/pypi/py-amqp-logging/
-https://github.com/yaravind/kafka-connect-jenkins
+https://pypi.python.org/pypi/python-nmap<br>
+https://pypi.python.org/pypi/python-libnmap/0.6.1<br>
+<br>
+https://nmap.org/book/output-formats-xml-output.html<br>
+<br>
+http://code.activestate.com/recipes/436477-filetailpy/<br>
+https://pypi.python.org/pypi/py-amqp-logging/<br>
+https://github.com/yaravind/kafka-connect-jenkins<br>
