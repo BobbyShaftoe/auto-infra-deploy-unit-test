@@ -40,8 +40,8 @@ node {
     }
 
     stage ('\u2781 Terraform Help'){
-        def TFHPlanAction = "Terraform Help"
-        echo "\u2600 Action: ${TFPlanAction}"
+        def TFHAction = "Terraform Help"
+        echo "\u2600 Action: ${TFHAction}"
         dir('.'){sh "terraform --help || true"}
     }
 }
