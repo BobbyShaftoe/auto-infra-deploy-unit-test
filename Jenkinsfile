@@ -15,10 +15,20 @@ node {
         def TFTESTAction = "Test Terraform Binary"
         echo "\u2600 Action: ${TFTESTAction}"
         dir('.'){
-        sh('terraform --help')
-        sh('ls')
-        sh'(pwd)'
+            sh('terraform --help -detailed-exitcode; echo \$? > status"')
         }
+
+        dir{
+            sh('ls')
+            sh('pwd')
+            }
+        }
+        def exitCode = readFile('status').trim()
+        def apply = false
+        echo "Terraform Plan Exit Code: ${exitCode}"
+        if (exitCode == 1) {
+            currentBuild.result = 'SUCCESS'
+            }
     }
 
     stage ('\u2779 LS'){
