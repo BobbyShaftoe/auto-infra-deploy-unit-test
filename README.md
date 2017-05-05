@@ -6,7 +6,7 @@
 
 A small collection of utilities that will compose a simple framework for performing tests on infrastructure components as they are created, modified or destroyed throughout any automated process or CI/CD pipeline.
 
-####The key concept is that each test will attempt 
+#### The key concept is that each test will attempt 
 *<h5>Reporting</h5> (to test that a resource does/does not exist)*</br>
     Reporting is through direct communication with the platform API</br>
     Python Boto or AWSCLI are options
