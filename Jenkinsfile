@@ -15,7 +15,7 @@ node {
         def TFTESTAction = "Test Terraform Binary"
         echo "\u2600 Action: ${TFTESTAction}"
         dir('.'){
-        sh('terraform -h')
+        sh('terraform --help')
         sh('ls')
         sh'(pwd)'
         }
