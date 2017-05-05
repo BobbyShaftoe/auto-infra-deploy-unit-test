@@ -51,9 +51,12 @@ A small in-memory DB may be required such as Redis
 
 
 
-Script
-  |
-  | - Python script/application
-        | - terraform lib
-        | - libnmap
+### REFERENCE
+https://pypi.python.org/pypi/python-nmap
+https://pypi.python.org/pypi/python-libnmap/0.6.1
 
+https://nmap.org/book/output-formats-xml-output.html
+
+http://code.activestate.com/recipes/436477-filetailpy/
+https://pypi.python.org/pypi/py-amqp-logging/
+https://github.com/yaravind/kafka-connect-jenkins
