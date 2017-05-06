@@ -85,7 +85,6 @@ node {
         }
 
         dir('comms'){
-//            def file_status = sh('"returnStdout: true, script: stat comms/jenkins_logger_pipe" || true').trim
            def file_status = sh returnStdout: true, script: "stat jenkins_logger_pipe || true"
             println "file status of coms directory is ${file_status}"
         }
@@ -107,7 +106,7 @@ node {
         echo "\u2600 Action: ${RAMFPAction}"
 
         dir('scripts'){
-            sh returnStdout: true, script: "./scripts/reader_script.sh  ${workspace}/comms/jenkins_logger_pipe"
+            sh returnStdout: true, script: "./reader_script.sh  ${workspace}/comms/jenkins_logger_pipe"
         }
     }
 
