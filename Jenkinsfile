@@ -62,7 +62,7 @@ node {
 
     stage ('\u2781 Make FIFO'){
         def MakeFIFOAction = "Make FIFO"
-        echo "\u2600 Action: ${MakeFIFOAction} in ${workspace}"
+        echo "\u2600 Action: ${MakeFIFOAction} in ${workspace}/comms"
 
         dir('comms'){
             sh returnStdout: true, script: "mkfifo -m 666 jenkins_logger_pipe || true"
@@ -73,7 +73,8 @@ node {
         }
 
         dir('comms'){
-            def file_status = sh('"returnStdout: true, script: stat jenkins_logger_pipe" || true').trim
+//            def file_status = sh('"returnStdout: true, script: stat jenkins_logger_pipe" || true').trim
+            def file_status = sh('returnStdout: true, script: stat jenkins_logger_pipe').trim
             println "file status of coms directory is ${file_status}"
         }
     }
