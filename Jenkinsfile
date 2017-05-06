@@ -62,7 +62,7 @@ node {
         }
 
         dir('comms'){
-            sh "chown centos:centos jenkins_logger_pipe || true"
+            sh "chown jenkins:jenkins jenkins_logger_pipe || true"
         }
 
         dir('comms'){
@@ -76,11 +76,11 @@ node {
         echo "\u2600 Action: ${CDDRSAction}"
 
         dir('terraform'){
-            sh returnStdout: true, script: 'ls -la > comms/jenkins_logger_pipe'
+            sh returnStdout: true, script: 'ls -la > ${workspace}/comms/jenkins_logger_pipe'
         }
 
         dir('comms'){
-            sh returnStdout: true, script: 'ls -la > comms/jenkins_logger_pipe'
+            sh returnStdout: true, script: 'ls -la > ${workspace}/comms/jenkins_logger_pipe'
         }
     }
 
