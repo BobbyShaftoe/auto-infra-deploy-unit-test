@@ -17,7 +17,7 @@
 A small collection of utilities that will compose a simple framework for performing tests on infrastructure components as they are created, 
 modified or destroyed throughout any automated process or CI/CD pipeline.
 
-#### The key concept is that each test will attempt to satisfy either of the two following type conditions:
+### The key concept is that each test will attempt to satisfy either of the two following type conditions:
 *<h4>Reportability</h4> (to test that a resource does/does not exist)*<br>
     Reporting is likely to simply be through direct communication with the platform API</br>
     Python Boto or AWSCLI are options
@@ -45,7 +45,7 @@ modified or destroyed throughout any automated process or CI/CD pipeline.
     and also writes test results out to json/junit/log and/or sends messages back into Kafka 
     to be consumed at the other end by Jenkins
     
-##### DETAILS ON SPECIFIC ACTIONS AND CONFIGURATION
+### Details on Specific Actions and Configuration
 - Run terraform from script using sh in Jenkinsfile
   - Also redirect output of that script to:
     - named pipe
