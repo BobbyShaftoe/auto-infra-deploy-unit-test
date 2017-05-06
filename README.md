@@ -1,6 +1,9 @@
 # Spec For Infrastructure Testing Framework
 ### Attempting to Simulate Unit and Integration Tests
     Currently, this is a simple idea and POC
+    The original and first idea was that a listener such as a message queue like Kafka, a named pipe, and/or just a simple script  to consume output of a Terraform action either by stream redirection or simply tailing a logfile
+    The Python libs mentioned above to consume output from a terraform command through message queue or similar, make connections, handle data, parse results perform tests, write out formats (Junit/XML and Json)
+    A small in-memory DB may be required such as Redis
 
 #### DESCRIPTION
 
@@ -19,9 +22,7 @@ A small collection of utilities that will compose a simple framework for perform
 *<b>Essentially most of the work will be handled by Python scripts</b>*
 *<b>The software technology implemented in the final idea for this framework may or may not be composed of something as follows</b>* </br> 
 
-The original and first idea was that a listener such as a message queue like Kafka, a named pipe, and/or just a simple script  to consume output of a Terraform action either by stream redirection or simply tailing a logfile
-The Python libs mentioned above to consume output from a terraform command through message queue or similar, make connections, handle data, parse results perform tests, write out formats (Junit/XML and Json)
-A small in-memory DB may be required such as Redis
+
 
 
 ### Process Flow - This is a more detailed and better defined description of the preferred method now being followed @06052017
