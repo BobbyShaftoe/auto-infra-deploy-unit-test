@@ -85,11 +85,11 @@ node {
         echo "\u2600 Action: ${CDDRSAction}"
 
         dir('terraform'){
-            sh returnStdout: true, script: 'ls -la > ${workspace}/comms/jenkins_logger_pipe'
+            sh returnStdout: true, script: "ls -la > ${workspace}/comms/jenkins_logger_pipe"
         }
 
         dir('comms'){
-            sh returnStdout: true, script: 'ls -la > ${workspace}/comms/jenkins_logger_pipe'
+            sh returnStdout: true, script: "ls -la > ${workspace}/comms/jenkins_logger_pipe"
         }
     }
 
