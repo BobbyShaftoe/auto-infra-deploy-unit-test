@@ -43,8 +43,15 @@ node {
         def MKCommsAction = "Make the Comms directory"
         echo "\u2600 Action: ${MKCommsAction}"
 
-        dir("."){
-            sh ("mkdir comms")
+        def exists = directoryExists 'comms'
+
+        if (exists) {
+            echo 'comms directory already exists. skipping'
+        }
+        else {
+            dir("."){
+                sh ("mkdir comms")
+            }
         }
 
         dir('.'){
