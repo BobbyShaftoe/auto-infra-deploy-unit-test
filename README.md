@@ -12,7 +12,7 @@
     
     A small in-memory DB may be required such as Redis
 
-#### DESCRIPTION
+### DESCRIPTION
 
 A small collection of utilities that will compose a simple framework for performing tests on infrastructure components as they are created, 
 modified or destroyed throughout any automated process or CI/CD pipeline.
