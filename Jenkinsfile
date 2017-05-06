@@ -1,5 +1,4 @@
 node {
-  timestamps {
 
     stage ('\u2776 Stage 1'){
         echo "\u2600 BUILD_URL=http://34.205.72.129:8080/job/dummy-pipeline"
@@ -30,6 +29,18 @@ node {
     }
 
 
+
+    stage ('\u2784 Read all messages from Pipe'){
+        def RAMFPAction = "Read all messages from Pipe"
+        echo "\u2600 Action: ${RAMFPAction}"
+
+        dir('scripts'){
+            "BUILD_ID=dontKillMe nohup bash ./reader_script.sh  ${workspace}/comms/jenkins_logger_pipe"
+        }
+    }
+
+
+
     stage ('\u2779 Terraform Help'){
         def TFHAction = "Terraform Help"
         echo "\u2600 Action: ${TFHAction}"
@@ -39,16 +50,7 @@ node {
         }
     }
 
-    stage ('\u2780 Terraform Plan'){
-        def TFPAction = "Terraform Plan"
-        echo "\u2600 Action: ${TFPAction}"
 
-        dir('terraform'){
-            sh "exec 3> ${workspace}/comms/jenkins_logger_pipe"
-            sh "terraform plan > ${workspace}/comms/jenkins_logger_pipe"
-            sh "echo '--- END OF FILE ---' > ${workspace}/comms/jenkins_logger_pipe"
-        }
-    }
 
 
 
@@ -103,17 +105,21 @@ node {
     }
 
 
-    stage ('\u2784 Read all messages from Pipe'){
-        def RAMFPAction = "Read all messages from Pipe"
-        echo "\u2600 Action: ${RAMFPAction}"
 
-        dir('scripts'){
-            sh returnStdout: true, script: "./reader_script.sh  ${workspace}/comms/jenkins_logger_pipe"
+    stage ('\u2780 Terraform Plan'){
+        def TFPAction = "Terraform Plan"
+        echo "\u2600 Action: ${TFPAction}"
+
+        dir('terraform'){
+            sh "exec 3> ${workspace}/comms/jenkins_logger_pipe"
+            sh "terraform plan > ${workspace}/comms/jenkins_logger_pipe"
+            sh "echo '--- END OF FILE ---' > ${workspace}/comms/jenkins_logger_pipe"
         }
     }
 
 
 
 
-  }
+
+
 }
