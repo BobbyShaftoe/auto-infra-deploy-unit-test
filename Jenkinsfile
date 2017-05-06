@@ -38,6 +38,18 @@ node {
         }
     }
 
+    stage ('\u2781 Terraform Plan'){
+        def TFPAction = "Terraform Plan"
+        echo "\u2600 Action: ${TFPAction}"
+
+        dir('terraform'){
+            sh "terraform plan > ${workspace}/comms/jenkins_logger_pipe"
+            sh "echo '--- END OF FILE ---' > ${workspace}/comms/jenkins_logger_pipe"
+        }
+    }
+
+
+
 
     stage ('\u2779 Make the Comms directory'){
         def MKCommsAction = "Make the Comms directory"
@@ -84,14 +96,23 @@ node {
         def CDDRSAction = "CD into Directories and list contents"
         echo "\u2600 Action: ${CDDRSAction}"
 
-        dir('terraform'){
-            sh returnStdout: true, script: "ls -la > ${workspace}/comms/jenkins_logger_pipe"
-        }
-
         dir('comms'){
             sh returnStdout: true, script: "ls -la > ${workspace}/comms/jenkins_logger_pipe"
         }
     }
+
+
+    stage ('\u2780 Read all messages from Pipe'){
+        def RAMFPAction = "Read all messages from Pipe"
+        echo "\u2600 Action: ${RAMFPAction}"
+
+        dir('scripts'){
+            sh returnStdout: true, script: "./scripts/reader_script.sh  ${workspace}/comms/jenkins_logger_pipe"
+        }
+    }
+
+
+
 
 
 }
