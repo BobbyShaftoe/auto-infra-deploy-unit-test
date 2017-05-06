@@ -37,7 +37,7 @@ A small collection of utilities that will compose a simple framework for perform
     and also writes test results out to json/junit/log and/or sends messages back into Kafka 
     to be consumed at the other end by Jenkins
     
-
+##### DETAILS ON SPECIFIC ACTIONS AND CONFIGURATION
 - Run terraform from script using sh in Jenkinsfile
   - Also redirect output of that script to:
     - named pipe
