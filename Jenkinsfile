@@ -11,6 +11,7 @@ node {
         echo "\u2600 Action: ${MainAction}"
     }
 
+
     stage ('\u2778 Test Terraform Binary Exists / Available on PATH'){
         def TFTESTAction = "Test Terraform Binary Exists / Available on PATH"
         echo "\u2600 Action: ${TFTESTAction}"
@@ -33,6 +34,7 @@ node {
         sh ("ls -l")
     }
 
+
     stage ('\u2780 CD into Terraform Dir and LS'){
         def CDTFAction = "CD into Terraform Dir and LS"
         echo "\u2600 Action: ${CDTFAction}"
@@ -42,9 +44,12 @@ node {
             }
     }
 
+
     stage ('\u2781 Terraform Help'){
         def TFHAction = "Terraform Help"
         echo "\u2600 Action: ${TFHAction}"
         dir('.'){sh "terraform --help || true"}
     }
+
+
 }
