@@ -40,7 +40,7 @@ node {
         def CDTFAction = "CD into Terraform Dir and LS"
         echo "\u2600 Action: ${CDTFAction}"
         dir('terraform/consul-deployment'){
-            sh "ls -l > $(pwd)/jenkins_logger_pipe"
+            sh returnStdout: true, script: 'ls -l > $(pwd)/jenkins_logger_pipe'
 
             }
     }
@@ -57,7 +57,7 @@ node {
         def MakeFIFOAction = "Terraform Help"
         echo "\u2600 Action: ${MakeFIFOAction}"
         dir(''){
-        sh "\{ mkfifo -m 666 $(pwd)/workspace/test_pipe && chown centos:centos $(pwd)/workspace/test_pipe; \} || true"
+        sh returnStdout: true, script: "mkfifo -m 666 $(pwd)/workspace/test_pipe && chown centos:centos $(pwd)/workspace/test_pipe || true"
         }
     }
 
