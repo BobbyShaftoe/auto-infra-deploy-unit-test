@@ -61,8 +61,8 @@ node {
 
 
     stage ('\u2781 Make FIFO'){
-        def MakeFIFOAction = "Terraform Help"
-        echo "\u2600 Action: ${MakeFIFOAction}"
+        def MakeFIFOAction = "Make FIFO"
+        echo "\u2600 Action: ${MakeFIFOAction} in ${workspace}"
 
         dir('comms'){
             sh returnStdout: true, script: "mkfifo -m 666 jenkins_logger_pipe || true"
