@@ -1,4 +1,5 @@
 node {
+  timestamps {
 
     stage ('\u2776 Stage 1'){
         echo "\u2600 BUILD_URL=http://34.205.72.129:8080/job/dummy-pipeline"
@@ -114,5 +115,5 @@ node {
 
 
 
-
+  }
 }
