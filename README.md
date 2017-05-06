@@ -16,18 +16,17 @@ A small collection of utilities that will compose a simple framework for perform
     Using python-libnmap or python-nmap
 
 
+*<b>Essentially most of the work will be handled by Python scripts</b>*
+*<b>The software technology implemented in the final idea for this framework may or may not be composed of something as follows</b>* </br> 
 
-*<b>The idea for this framework may or may not be composed of</b>* </br> 
-
-a listener such as a message queue like Kafka, a named pipe, and/or just a simple script  to consume output of a Terraform action either by stream redirection or simply tailing a logfile
+The original and first idea was that a listener such as a message queue like Kafka, a named pipe, and/or just a simple script  to consume output of a Terraform action either by stream redirection or simply tailing a logfile
 The Python libs mentioned above to consume output from a terraform command through message queue or similar, make connections, handle data, parse results perform tests, write out formats (Junit/XML and Json)
 A small in-memory DB may be required such as Redis
 
-*<b>Essentially most of the work will be handled by Python scripts</b>*
 
-### Process Flow
+### Process Flow - This is a more detailed and better defined description of the preferred method now being followed @06052017
 /@ **Jenkins job starts** @/<br><br>
-&nbsp;&nbsp; &nbsp;&nbsp;     /@ **Terraform Stage** @/
+&nbsp;&nbsp; &nbsp;&nbsp;     /+ **Terraform Stage** +/ 
   - Terraform action is performed plan/apply
   - Jenkins logs are piped/stream-redirected/logfile tailed to Kafka broker as messages
     - some file descriptor redirection or creation of named pipe(s) may be required
