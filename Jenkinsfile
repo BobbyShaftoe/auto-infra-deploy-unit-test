@@ -29,7 +29,7 @@ node {
     }
 
 
-    stage ('\u2781 Terraform Help'){
+    stage ('\u2779 Terraform Help'){
         def TFHAction = "Terraform Help"
         echo "\u2600 Action: ${TFHAction}"
 
@@ -38,7 +38,7 @@ node {
         }
     }
 
-    stage ('\u2781 Terraform Plan'){
+    stage ('\u2780 Terraform Plan'){
         def TFPAction = "Terraform Plan"
         echo "\u2600 Action: ${TFPAction}"
 
@@ -51,7 +51,7 @@ node {
 
 
 
-    stage ('\u2779 Make the Comms directory'){
+    stage ('\u2781 Make the Comms directory'){
         def MKCommsAction = "Make the Comms directory"
         echo "\u2600 Action: ${MKCommsAction}"
 
@@ -72,7 +72,7 @@ node {
     }
 
 
-    stage ('\u2781 Make FIFO'){
+    stage ('\u2782 Make FIFO'){
         def MakeFIFOAction = "Make FIFO"
         echo "\u2600 Action: ${MakeFIFOAction} in ${workspace}/comms"
 
@@ -91,7 +91,7 @@ node {
     }
 
 
-    stage ('\u2780 CD into Directories and list contents'){
+    stage ('\u2783 CD into Directories and list contents'){
         def CDDRSAction = "CD into Directories and list contents"
         echo "\u2600 Action: ${CDDRSAction}"
 
@@ -101,7 +101,7 @@ node {
     }
 
 
-    stage ('\u2780 Read all messages from Pipe'){
+    stage ('\u2784 Read all messages from Pipe'){
         def RAMFPAction = "Read all messages from Pipe"
         echo "\u2600 Action: ${RAMFPAction}"
 
