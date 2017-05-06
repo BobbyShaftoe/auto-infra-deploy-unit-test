@@ -40,7 +40,7 @@ node {
         def CDTFAction = "CD into Terraform Dir and LS"
         echo "\u2600 Action: ${CDTFAction}"
         dir('terraform/consul-deployment'){
-            sh "ls -l > /var/lib/docker/volumes/compose_data-jenkins/_data/jenkins_logger_pipe"
+            sh "ls -l > $(pwd)/jenkins_logger_pipe"
 
             }
     }
