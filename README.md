@@ -14,14 +14,15 @@
 
 #### DESCRIPTION
 
-A small collection of utilities that will compose a simple framework for performing tests on infrastructure components as they are created, modified or destroyed throughout any automated process or CI/CD pipeline.
+A small collection of utilities that will compose a simple framework for performing tests on infrastructure components as they are created, 
+modified or destroyed throughout any automated process or CI/CD pipeline.
 
-#### The key concept is that each test will attempt to satisfy either of the two following requirements:
-*<h5>Reporting</h5> (to test that a resource does/does not exist)*<br>
+#### The key concept is that each test will attempt to satisfy either of the two following type conditions:
+*<h4>Reportability</h4> (to test that a resource does/does not exist)*<br>
     Reporting is likely to simply be through direct communication with the platform API</br>
     Python Boto or AWSCLI are options
 
-*<h5>Reachability</h5> (to test that a resource is reachable, via Networking Layers 3,4,5 or 7)*<br>
+*<h4>Reachability</h4> (to test that a resource is reachable, via Networking Layers 3,4,5 or 7)*<br>
     eg. Ping, Traceroute, Dig, Nmap, Telnet, HTTP, SSH, SNMP </br>
     Using python-libnmap or python-nmap
 
