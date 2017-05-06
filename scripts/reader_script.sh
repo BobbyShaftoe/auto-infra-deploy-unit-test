@@ -20,7 +20,7 @@ exec 3< ${pipe}
 while true; do
 
   if read line < ${pipe}; then
-    echo $line
+    echo $line | tee -a ./reader.log
         if [ "${line}" ==  '--- END OF FILE ---' ]; then
             exit 0
         fi
