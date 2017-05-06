@@ -74,7 +74,7 @@ node {
 
         dir('comms'){
 //            def file_status = sh('"returnStdout: true, script: stat jenkins_logger_pipe" || true').trim
-            def file_status = sh('returnStdout: true, script: stat jenkins_logger_pipe').trim
+            def file_status = sh returnStdout: true, script: ('stat jenkins_logger_pipe').trim
             println "file status of coms directory is ${file_status}"
         }
     }
