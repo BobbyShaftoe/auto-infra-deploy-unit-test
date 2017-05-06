@@ -11,8 +11,8 @@ node {
         echo "\u2600 Action: ${MainAction}"
     }
 
-    stage ('\u2778 Test Terraform Binary'){
-        def TFTESTAction = "Test Terraform Binary"
+    stage ('\u2778 Test Terraform Binary Exists / Available on PATH'){
+        def TFTESTAction = "Test Terraform Binary Exists / Available on PATH"
         echo "\u2600 Action: ${TFTESTAction}"
 
         dir('.'){
@@ -36,7 +36,10 @@ node {
     stage ('\u2780 CD into Terraform Dir and LS'){
         def CDTFAction = "CD into Terraform Dir and LS"
         echo "\u2600 Action: ${CDTFAction}"
-        dir('terraform/consul-deployment'){sh "ls -l"}
+        dir('terraform/consul-deployment'){
+            sh "ls -l" > /var/lib/docker/volumes/compose_data-jenkins/_data/jenkins_logger_pipe
+
+            }
     }
 
     stage ('\u2781 Terraform Help'){
