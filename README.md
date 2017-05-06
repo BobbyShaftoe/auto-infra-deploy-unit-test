@@ -1,8 +1,15 @@
 # Spec For Infrastructure Testing Framework
 ### Attempting to Simulate/Approximate some typical Software Unit and Integration Test Process
     Currently, this is a simple idea and POC
-    The original and first idea was that a listener such as a message queue like Kafka, a named pipe, and/or just a simple script  to consume output of a Terraform action either by stream redirection or simply tailing a logfile
-    The Python libs mentioned above to consume output from a terraform command through message queue or similar, make connections, handle data, parse results perform tests, write out formats (Junit/XML and Json)
+    
+    The original and first idea was that a message broker such as a message queue tool like Kafka, or a named pipe, 
+    or a script to consume output of a Terraform action run by Jenkins, either by stream redirection or simply tailing a logfile
+    could provide serviceable input to something like a suite of Python scripts
+    ...and tests can be run on consuming the messages or log stream or what-have-you
+    
+    The Python libs mentioned above to consume output from a terraform command through message queue or similar, 
+    make connections, handle data, parse results perform tests, write out formats (Junit/XML and Json)
+    
     A small in-memory DB may be required such as Redis
 
 #### DESCRIPTION
