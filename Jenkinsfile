@@ -6,9 +6,10 @@ node {
         echo "\u2600 workspace=${workspace}"
     }
 
-    stage ('\u2777 Stage 2'){
-        def MainAction = "terraformDeploy"
+    stage ('\u2777 Stage 2 - Checkout Configuration Repo'){
+        def MainAction = "cloneRepo"
         echo "\u2600 Action: ${MainAction}"
+        git url: 'https://github.com/BobbyShaftoe/auto-infra-deploy-unit-test.git'
     }
 
 
@@ -49,6 +50,15 @@ node {
         def TFHAction = "Terraform Help"
         echo "\u2600 Action: ${TFHAction}"
         dir('.'){sh "terraform --help || true"}
+    }
+
+
+        stage ('\u2781 Make FIFO'){
+        def MakeFIFOAction = "Terraform Help"
+        echo "\u2600 Action: ${MakeFIFOAction}"
+        dir(''){
+        sh "\{ mkfifo -m 666 $(pwd)/workspace/test_pipe && chown centos:centos $(pwd)/workspace/test_pipe; \} || true"
+        }
     }
 
 
