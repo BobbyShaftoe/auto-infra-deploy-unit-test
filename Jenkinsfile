@@ -13,6 +13,7 @@ node {
     }
 
 
+
     stage ('\u2778 Test Terraform Binary Exists / Available on PATH'){
         def TFTESTAction = "Test Terraform Binary Exists / Available on PATH"
         echo "\u2600 Action: ${TFTESTAction}"
@@ -25,39 +26,61 @@ node {
             sh('ls')
             sh('pwd')
         }
-
-
-    }
-
-    stage ('\u2779 LS'){
-        def LSAction = "List files and directories"
-        echo "\u2600 Action: ${LSAction}"
-        sh ("ls -l")
-    }
-
-
-    stage ('\u2780 CD into Terraform Dir and LS'){
-        def CDTFAction = "CD into Terraform Dir and LS"
-        echo "\u2600 Action: ${CDTFAction}"
-        dir('terraform/consul-deployment'){
-            sh returnStdout: true, script: 'ls -l > $(pwd)/jenkins_logger_pipe'
-
-            }
     }
 
 
     stage ('\u2781 Terraform Help'){
         def TFHAction = "Terraform Help"
         echo "\u2600 Action: ${TFHAction}"
-        dir('.'){sh "terraform --help || true"}
+
+        dir('.'){
+            sh "terraform --help || true"
+        }
     }
 
 
-        stage ('\u2781 Make FIFO'){
+    stage ('\u2779 Make the Comms directory'){
+        def MKCommsAction = "Make the Comms directory"
+        echo "\u2600 Action: ${MKCommsAction}"
+
+        dir("."){
+            sh ("mkdir comms")
+        }
+
+        dir('.'){
+            sh returnStdout: true, script: "stat comms || true"
+        }
+    }
+
+
+    stage ('\u2781 Make FIFO'){
         def MakeFIFOAction = "Terraform Help"
         echo "\u2600 Action: ${MakeFIFOAction}"
-        dir(''){
-        sh returnStdout: true, script: "mkfifo -m 666 $(pwd)/workspace/test_pipe && chown centos:centos $(pwd)/workspace/test_pipe || true"
+
+        dir('comms'){
+            sh returnStdout: true, script: "mkfifo -m 666 jenkins_logger_pipe || true"
+        }
+
+        dir('comms'){
+            sh "chown centos:centos jenkins_logger_pipe || true"
+        }
+
+        dir('comms'){
+            sh returnStdout: true, script: "stat jenkins_logger_pipe || true"
+        }
+    }
+
+
+    stage ('\u2780 CD into Directories and list contents'){
+        def CDDRSAction = "CD into Directories and list contents"
+        echo "\u2600 Action: ${CDDRSAction}"
+
+        dir('terraform'){
+            sh returnStdout: true, script: 'ls -la > comms/jenkins_logger_pipe'
+        }
+
+        dir('comms'){
+            sh returnStdout: true, script: 'ls -la > comms/jenkins_logger_pipe'
         }
     }
 
