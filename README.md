@@ -6,9 +6,9 @@
 
 A small collection of utilities that will compose a simple framework for performing tests on infrastructure components as they are created, modified or destroyed throughout any automated process or CI/CD pipeline.
 
-#### The key concept is that each test will attempt 
+#### The key concept is that each test will attempt to satisfy either of the two following requirements:
 *<h5>Reporting</h5> (to test that a resource does/does not exist)*<br>
-    Reporting is through direct communication with the platform API</br>
+    Reporting is likely to simply be through direct communication with the platform API</br>
     Python Boto or AWSCLI are options
 
 *<h5>Reachability</h5> (to test that a resource is reachable, via Networking Layers 3,4,5 or 7)*<br>
@@ -25,8 +25,18 @@ A small in-memory DB may be required such as Redis
 
 *<b>Essentially most of the work will be handled by Python scripts</b>*
 
-
-
+### Process Flow
+/@ **Jenkins job starts** @/<br><br>
+&nbsp;&nbsp; &nbsp;&nbsp;     /@ **Terraform Stage** @/
+  - Terraform action is performed plan/apply
+  - Jenkins logs are piped/stream-redirected/logfile tailed to Kafka broker as messages
+    - some file descriptor redirection or creation of named pipe(s) may be required
+  - A Python script is also run that consumes messages in the Kafka queue
+    - Python script creates a catalogue from message information 
+    and executes tests on resource components based on what it is receiving
+    and also writes test results out to json/junit/log and/or sends messages back into Kafka 
+    to be consumed at the other end by Jenkins
+    
 
 - Run terraform from script using sh in Jenkinsfile
   - Also redirect output of that script to:
