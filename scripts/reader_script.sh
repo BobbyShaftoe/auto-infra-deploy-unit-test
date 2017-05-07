@@ -8,6 +8,11 @@
 #DEFAULT_INTERVAL=1
 #DEFAULT_DELAY=1
 
+if ps ax | grep -v 'grep' | grep ${0}; then
+  echo "I'm already running. Exiting..."
+  exit 0
+fi
+
 pipe="${1}"
 [ ! -e "$pipe" ] && { echo "FIFO / Named Pipe: $pipe  does not exist"; exit 1; }
 
