@@ -76,7 +76,7 @@ node {
         }
     }
 
-
+/*
     stage ('\u2782 Make FIFO'){
         def MakeFIFOAction = "Make FIFO"
         echo "\u2600 Action: ${MakeFIFOAction} in ${workspace}/../comms"
@@ -105,7 +105,7 @@ node {
             script: "echo  MARKER  > ${workspace}/../comms/jenkins_logger_pipe"
         }
     }
-
+*/
 
 
     stage ('\u2784 Terraform Plan'){
