@@ -30,16 +30,16 @@ node {
 
 
 
-    stage ('\u2779 Read all messages from Pipe'){
+/*    stage ('\u2779 Read all messages from Pipe'){
         def RAMFPAction = "Read all messages from Pipe"
         echo "\u2600 Action: ${RAMFPAction}"
 
         dir('scripts'){
-            BUILD_ID=dontKillMe nohup sh "./reader_script.sh  ${workspace}/comms/jenkins_logger_pipe"
-//              sh "./reader_script.sh  ${workspace}/comms/jenkins_logger_pipe"
+            BUILD_ID=dontKillMe nohup sh "./reader_script.sh  ${workspace}/../comms/jenkins_logger_pipe"
+//              sh "./reader_script.sh  ${workspace}/../comms/jenkins_logger_pipe"
         }
     }
-
+*/
 
 
     stage ('\u2780 Terraform Help'){
@@ -79,7 +79,7 @@ node {
 
     stage ('\u2782 Make FIFO'){
         def MakeFIFOAction = "Make FIFO"
-        echo "\u2600 Action: ${MakeFIFOAction} in ${workspace}/comms"
+        echo "\u2600 Action: ${MakeFIFOAction} in ${workspace}/../comms"
 
         dir('comms'){
             sh returnStdout: true, script: "mkfifo -m 666 jenkins_logger_pipe || true"
@@ -102,7 +102,7 @@ node {
 
         dir('comms'){
             sh returnStdout: true,
-            script: "echo  MARKER  > ${workspace}/comms/jenkins_logger_pipe"
+            script: "echo  MARKER  > ${workspace}/../comms/jenkins_logger_pipe"
         }
     }
 
@@ -113,10 +113,10 @@ node {
         echo "\u2600 Action: ${TFPAction}"
 
         dir('terraform'){
-            sh "exec 3> ${workspace}/comms/jenkins_logger_pipe"
-//            sh "${workspace}/scripts/command_and_timeout.sh -t 20 -d 5 terraform plan > ${workspace}/comms/jenkins_logger_pipe"
-            sh "terraform plan > ${workspace}/comms/jenkins_logger_pipe"
-            sh "echo '--- END OF FILE ---' > ${workspace}/comms/jenkins_logger_pipe"
+            sh "exec 3> ${workspace}/../comms/jenkins_logger_pipe"
+//            sh "${workspace}/scripts/command_and_timeout.sh -t 20 -d 5 terraform plan > ${workspace}/../comms/jenkins_logger_pipe"
+            sh "terraform plan > ${workspace}/../comms/jenkins_logger_pipe"
+            sh "echo '--- END OF FILE ---' > ${workspace}/../comms/jenkins_logger_pipe"
         }
     }
 
