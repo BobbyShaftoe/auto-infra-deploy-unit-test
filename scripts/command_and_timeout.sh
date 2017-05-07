@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-
+#!/bin/bash
 #
 # The Bash shell script executes a command with a time-out.
 # Upon time-out expiration SIGTERM (15) is sent to the process. If the signal
@@ -14,10 +13,6 @@
 # little more transparent implementation to my taste.
 #
 # Dmitry V Golovashkin <Dmitry.Golovashkin@sas.com>
-##
-##  REFERENCE:
-##  http://www.bashcookbook.com/bashinfo/source/bash-4.0/examples/scripts/timeout3
-
 
 scriptName="${0##*/}"
 
