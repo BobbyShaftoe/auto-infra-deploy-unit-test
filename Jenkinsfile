@@ -114,6 +114,7 @@ node {
 
         dir('terraform'){
             sh "exec 3> ${workspace}/../comms/jenkins_logger_pipe"
+            sh "terraform get > ${workspace}/../comms/jenkins_logger_pipe"
             sh "terraform plan > ${workspace}/../comms/jenkins_logger_pipe"
             sh "echo '--- END OF FILE ---' > ${workspace}/../comms/jenkins_logger_pipe"
         }
