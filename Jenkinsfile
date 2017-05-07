@@ -81,7 +81,7 @@ node {
         def MakeFIFOAction = "Make FIFO"
         echo "\u2600 Action: ${MakeFIFOAction} in ${workspace}/../comms"
 
-        dir('comms'){
+        dir('${workdir}/../comms'){
             sh returnStdout: true, script: "mkfifo -m 666 jenkins_logger_pipe || true"
         }
 
