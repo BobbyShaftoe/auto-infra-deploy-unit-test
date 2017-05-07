@@ -22,7 +22,7 @@ while true; do
 
   if read line < ${pipe}; then
 
-    echo "${count}: $(date '+%H:%M:%S'): $line" >> comms/jenkins_log
+    echo "${count}: $(date '+%H:%M:%S'): $line"
 
         if [ "${line}" ==  '--- END OF FILE ---' ]; then
             exit 0
