@@ -21,13 +21,13 @@ trap "exit" 1 2 3 15
 
 
 exec 3< ${pipe}
-exec > >(tee -i comms/jenkins_log)
+#exec > >(tee -i comms/jenkins_log)
 
 while true; do
 
   if read line < ${pipe}; then
 
-    echo "${count}: $(date '+%H:%M:%S'): $line"
+    echo "${count}: $(date '+%H:%M:%S'): $line" | tee -a  comms/jenkins_log
 
         if [ "${line}" ==  '--- END OF FILE ---' ]; then
             sleep 1
@@ -35,7 +35,7 @@ while true; do
     count=$((count+1))
   fi
 
-  echo "Finished Time: $(date '+%H:%M:%S')"
+  echo "Finished Time: $(date '+%H:%M:%S')" | tee -a comms/jenkins_log
 
 
   sleep 0.5
