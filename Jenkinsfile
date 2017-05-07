@@ -35,7 +35,8 @@ node {
         echo "\u2600 Action: ${RAMFPAction}"
 
         dir('scripts'){
-            "BUILD_ID=dontKillMe nohup bash exec 3> ${workspace}/comms/jenkins_logger_pipe && ./reader_script.sh  ${workspace}/comms/jenkins_logger_pipe"
+//            "BUILD_ID=dontKillMe nohup bash ./reader_script.sh  ${workspace}/comms/jenkins_logger_pipe"
+              "sh(ps ax)"
         }
     }
 
@@ -113,7 +114,7 @@ node {
 
         dir('terraform'){
             sh "exec 3> ${workspace}/comms/jenkins_logger_pipe"
-            sh "${workspace}/scripts/command_and_timeout.sh -t 20 -d 5 terraform plan > ${workspace}/comms/jenkins_logger_pipe"
+            bash "${workspace}/scripts/command_and_timeout.sh -t 20 -d 5 terraform plan > ${workspace}/comms/jenkins_logger_pipe"
             sh "echo '--- END OF FILE ---' > ${workspace}/comms/jenkins_logger_pipe"
         }
     }
