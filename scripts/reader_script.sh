@@ -25,7 +25,7 @@ while true; do
     echo "${count}: $(date '+%H:%M:%S'): $line"
 
         if [ "${line}" ==  '--- END OF FILE ---' ]; then
-            exit 0
+            sleep 1
         fi
     count=$((count+1))
   fi
