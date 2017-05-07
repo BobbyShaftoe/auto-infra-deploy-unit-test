@@ -35,8 +35,8 @@ node {
         echo "\u2600 Action: ${RAMFPAction}"
 
         dir('scripts'){
-//            "BUILD_ID=dontKillMe nohup sh ./reader_script.sh  ${workspace}/comms/jenkins_logger_pipe"
-              sh "./reader_script.sh  ${workspace}/comms/jenkins_logger_pipe"
+            BUILD_ID=dontKillMe nohup sh "./reader_script.sh  ${workspace}/comms/jenkins_logger_pipe"
+//              sh "./reader_script.sh  ${workspace}/comms/jenkins_logger_pipe"
         }
     }
 
