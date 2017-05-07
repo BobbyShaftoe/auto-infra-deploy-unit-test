@@ -55,7 +55,7 @@ node {
 
 
 
-
+/*
     stage ('\u2781 Make the Comms directory'){
         def MKCommsAction = "Make the Comms directory"
         echo "\u2600 Action: ${MKCommsAction}"
@@ -76,7 +76,7 @@ node {
         }
     }
 
-/*
+
     stage ('\u2782 Make FIFO'){
         def MakeFIFOAction = "Make FIFO"
         echo "\u2600 Action: ${MakeFIFOAction} in ${workspace}/../comms"
