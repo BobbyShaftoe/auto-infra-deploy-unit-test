@@ -101,7 +101,7 @@ node {
 
         dir('comms'){
             sh returnStdout: true,
-            script: "echo "- MARKER -" > ${workspace}/comms/jenkins_logger_pipe"
+            script: "echo  MARKER  > ${workspace}/comms/jenkins_logger_pipe"
         }
     }
 
