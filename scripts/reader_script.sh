@@ -21,7 +21,7 @@ exec > >(tee -i ../comms/jenkins_log)
 while true; do
 
   if read line < ${pipe}; then
-    echo "${count}) $(date '+%H:%M:%S'): $line >> ./reader.log
+    echo "${count}) $(date '+%H:%M:%S'): $line >> ../comms/jenkins_log
         if [ "${line}" ==  '--- END OF FILE ---' ]; then
             exit 0
         fi
