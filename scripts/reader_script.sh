@@ -16,6 +16,7 @@ trap "exit" 1 2 3 15
 
 
 exec 3< ${pipe}
+exec > >(tee -i ../comms/jenkins_log)
 
 while true; do
 
