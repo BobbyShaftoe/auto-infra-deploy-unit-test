@@ -100,7 +100,8 @@ node {
         echo "\u2600 Action: ${CDDRSAction}"
 
         dir('comms'){
-            sh returnStdout: true, script: "scripts/command_and_timeout.sh -t 20 -d 5 ls -la > ${workspace}/comms/jenkins_logger_pipe"
+            sh returnStdout: true,
+            script: "${workspace}/scripts/command_and_timeout.sh -t 20 -d 5 ls -la > ${workspace}/comms/jenkins_logger_pipe"
         }
     }
 
