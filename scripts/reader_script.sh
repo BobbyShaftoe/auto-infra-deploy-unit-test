@@ -8,7 +8,7 @@
 #DEFAULT_INTERVAL=1
 #DEFAULT_DELAY=1
 
-if ps ax | grep -v 'grep' | grep ${0}; then
+if ps ax | egrep -v "grep|$$" | grep ${0}; then
   echo "I'm already running. Exiting..."
   exit 0
 fi
