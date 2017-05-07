@@ -112,7 +112,7 @@ node {
         def TFPAction = "Terraform Plan"
         echo "\u2600 Action: ${TFPAction}"
 
-        dir('terraform'){
+        dir('terraform/aws-three-tier'){
             sh "exec 3> ${workspace}/../comms/jenkins_logger_pipe"
             sh "terraform get > ${workspace}/../comms/jenkins_logger_pipe"
             sh "terraform plan > ${workspace}/../comms/jenkins_logger_pipe"
