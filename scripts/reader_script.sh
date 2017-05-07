@@ -11,21 +11,23 @@
 pipe="${1}"
 [ ! -e "$pipe" ] && { echo "FIFO / Named Pipe: $pipe  does not exist"; exit 1; }
 
+count=0
 trap "exit" 1 2 3 15
 
 
 exec 3< ${pipe}
 
-
 while true; do
 
   if read line < ${pipe}; then
-    echo $line | tee -a ./reader.log
+    echo "${count}) $(date '+%H:%M:%S'): $line >> ./reader.log
         if [ "${line}" ==  '--- END OF FILE ---' ]; then
             exit 0
         fi
+    count=$((count+1))
   fi
 
+  echo "Finished Time: $(date '+%H:%M:%S')"
 
 
   sleep 0.5

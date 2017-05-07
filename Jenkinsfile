@@ -30,7 +30,7 @@ node {
 
 
 
-    stage ('\u2784 Read all messages from Pipe'){
+    stage ('\u2779 Read all messages from Pipe'){
         def RAMFPAction = "Read all messages from Pipe"
         echo "\u2600 Action: ${RAMFPAction}"
 
@@ -41,7 +41,7 @@ node {
 
 
 
-    stage ('\u2779 Terraform Help'){
+    stage ('\u2780 Terraform Help'){
         def TFHAction = "Terraform Help"
         echo "\u2600 Action: ${TFHAction}"
 
@@ -90,7 +90,7 @@ node {
 
         dir('comms'){
            def file_status = sh returnStdout: true, script: "stat jenkins_logger_pipe || true"
-            println "file status of coms directory is ${file_status}"
+            println "file status of comms directory is ${file_status}"
         }
     }
 
@@ -100,13 +100,13 @@ node {
         echo "\u2600 Action: ${CDDRSAction}"
 
         dir('comms'){
-            sh returnStdout: true, script: "ls -la > ${workspace}/comms/jenkins_logger_pipe"
+            sh returnStdout: true, script: "scripts/command_and_timeout.sh -t 20 -d 5 ls -la > ${workspace}/comms/jenkins_logger_pipe"
         }
     }
 
 
 
-    stage ('\u2780 Terraform Plan'){
+    stage ('\u2784 Terraform Plan'){
         def TFPAction = "Terraform Plan"
         echo "\u2600 Action: ${TFPAction}"
 
