@@ -36,7 +36,7 @@ node {
 
         dir('scripts'){
 //            "BUILD_ID=dontKillMe nohup sh ./reader_script.sh  ${workspace}/comms/jenkins_logger_pipe"
-              "sh(ps ax)"
+              sh "./reader_script.sh  ${workspace}/comms/jenkins_logger_pipe"
         }
     }
 
