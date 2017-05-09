@@ -106,6 +106,6 @@ module "example_main_instance_elb" {
   source = "modules/elb"
   subnet_cidrs = ["${module.subnet_public.example_subnet_public_0_id}"]
   security_groups = ["${module.example_security_groups.security_group_elb_id}","${module.example_security_groups.security_group_web_instance_id}"]
-  instances = ["${module.example_ec2_app.ec2_id}"]
+  instances = "${module.example_ec2_app.ec2_id}"
 
 }
