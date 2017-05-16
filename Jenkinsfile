@@ -116,7 +116,7 @@ node {
 /*          sh "exec 3> ${workspace}/../comms/jenkins_logger_pipe"
 */
             sh '''#!/bin/bash -xe
-            exec > >(tee -i ${workspace}/../comms/jenkins_logger_pipe)
+            exec > >(tee -i ${workspace}/comms/jenkins_logger_pipe)
             terraform get  2>&1
             terraform plan  2>&1
             echo '--- END OF FILE ---'
