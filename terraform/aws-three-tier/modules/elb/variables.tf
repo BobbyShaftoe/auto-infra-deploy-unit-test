@@ -1,9 +1,9 @@
 
 variable "security_groups" {
-  type = list
+  type = "list"
 }
 variable "instances" {
-  type = list
+  type = "list"
 }
 
 variable "subnet_cidrs" {
