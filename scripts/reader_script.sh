@@ -4,9 +4,6 @@
 # NOTE:
 # Whatever is writing to the pipe typically writes '--- END OF FILE ---' signalling to this script to exit
 #
-#DEFAULT_TIMEOUT=9
-#DEFAULT_INTERVAL=1
-#DEFAULT_DELAY=1
 
 if ps ax | egrep -v "grep|$$" | grep ${0}; then
   echo "I'm already running. Exiting..."
@@ -14,6 +11,10 @@ if ps ax | egrep -v "grep|$$" | grep ${0}; then
 fi
 
 pipe="${1}"
+pipe_path=`dirname "${pipe}"`
+pipe_name=`basename "${pipe}"`
+
+[ ! -e "$pipe" ] && mkfifo ${pipe} || true
 [ ! -e "$pipe" ] && { echo "FIFO / Named Pipe: $pipe  does not exist"; exit 1; }
 
 count=0
@@ -26,18 +27,17 @@ exec 3< ${pipe}
 while true; do
 
   if read line < ${pipe}; then
-
-    echo "${count}: $(date '+%H:%M:%S'): $line" | tee -a  comms/jenkins_log
+    count=$((count+1))
+    echo "${count}: $(date '+%H:%M:%S'): $line" >>  comms/jenkins_log  2>&1
 
         if [ "${line}" ==  '--- END OF FILE ---' ]; then
-            sleep 1
+	    count=$((count+1))
+            echo "${count}: Finished Time: $(date '+%H:%M:%S')" >>  comms/jenkins_log 2>&1
         fi
-    count=$((count+1))
   fi
 
-  echo "Finished Time: $(date '+%H:%M:%S')" | tee -a comms/jenkins_log
 
 
-  sleep 0.5
+  sleep 0.1
 
 done
