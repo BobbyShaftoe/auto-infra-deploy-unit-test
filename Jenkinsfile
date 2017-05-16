@@ -114,9 +114,10 @@ node {
 
         dir('terraform/aws-three-tier'){
             sh "exec 3> ${workspace}/../comms/jenkins_logger_pipe"
-            sh "exec > >(tee -i ${workspace}/../comms/jenkins_logger_pipe) && terraform get"
-            sh "exec > >(tee -i ${workspace}/../comms/jenkins_logger_pipe) && terraform plan > ${workspace}/../comms/jenkins_logger_pipe 2>&1"
-            sh "exec > >(tee -i ${workspace}/../comms/jenkins_logger_pipe) && echo '--- END OF FILE ---'"
+            sh "exec > >(tee -i ${workspace}/../comms/jenkins_logger_pipe)"
+            sh "terraform get"
+            sh "terraform plan > ${workspace}/../comms/jenkins_logger_pipe 2>&1"
+            sh "echo '--- END OF FILE ---'"
         }
     }
 
