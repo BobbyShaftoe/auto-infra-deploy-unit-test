@@ -119,7 +119,7 @@ node {
             echo ${workspace}
             ls -l *
             pwd
-            exec > >(tee -i ../../../comms/jenkins_logger_pipe)
+            exec > >(tee -i /var/lib/docker/volumes/compose_data-jenkins/_data/workspace/comms)
             terraform get  2>&1
             terraform plan  2>&1
             echo '--- END OF FILE ---'
