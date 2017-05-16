@@ -117,7 +117,7 @@ node {
 */
             sh '''#!/bin/bash -x
             echo ${workspace}
-            cd ${workspace}
+            ls -l *
             pwd
             exec > >(tee -i comms/jenkins_logger_pipe)
             terraform get  2>&1
