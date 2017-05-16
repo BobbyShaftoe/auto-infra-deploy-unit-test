@@ -115,7 +115,7 @@ node {
         dir('terraform/aws-three-tier'){
 /*          sh "exec 3> ${workspace}/../comms/jenkins_logger_pipe"
 */
-            sh '''#!/bin/bash -xe
+            sh '''#!/bin/bash -x
             echo ${workspace}
             cd ${workspace}
             pwd
