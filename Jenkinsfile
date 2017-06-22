@@ -40,7 +40,7 @@ node {
         dir('terraform/aws-three-tier'){
             sh "ls -la"
             sh "terraform get"
-            sh "terraform plan"
+            sh "terraform plan -no-color"
 
         }
     }
