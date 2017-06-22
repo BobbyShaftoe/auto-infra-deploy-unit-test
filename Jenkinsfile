@@ -23,7 +23,7 @@ node {
         }
 
         dir('.'){
-            sh("ls -la *")
+            sh("ls -la */*")
             sh('pwd')
         }
     }
@@ -37,7 +37,7 @@ node {
         def TFPAction = "Terraform Plan"
         echo "\u2600 Action: ${TFPAction}"
 
-        dir('aws-three-tier'){
+        dir('terraform/aws-three-tier'){
             sh "ls -la"
             sh "terraform get"
             sh "terraform plan"
