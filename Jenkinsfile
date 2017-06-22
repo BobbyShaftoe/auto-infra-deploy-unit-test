@@ -7,7 +7,11 @@ node {
     }
 
 
-
+    stage ('\u2777 Stage 2 - Checkout Configuration Repo'){
+        def MainAction = "cloneRepo"
+        echo "\u2600 Action: ${MainAction}"
+        git url: 'https://github.com/BobbyShaftoe/auto-infra-deploy-unit-test.git'
+    }
 
 
     stage ('\u2778 Test Terraform Binary Exists / Available on PATH'){
