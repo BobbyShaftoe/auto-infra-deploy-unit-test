@@ -19,7 +19,7 @@ node {
         }
 
         dir('.'){
-            sh('ls')
+            sh("ls -la *")
             sh('pwd')
         }
     }
