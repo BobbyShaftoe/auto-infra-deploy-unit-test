@@ -34,7 +34,7 @@ node {
         echo "\u2600 Action: ${TFPAction}"
 
         dir('aws-three-tier'){
-
+            sh "ls -la"
             sh "terraform get"
             sh "terraform plan"
 
