@@ -33,7 +33,7 @@ node {
         def TFPAction = "Terraform Plan"
         echo "\u2600 Action: ${TFPAction}"
 
-        dir('terraform/aws-three-tier'){
+        dir('aws-three-tier'){
 
             sh "terraform get"
             sh "terraform plan"
